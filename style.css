@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  background-color: hsl(235, 16%, 14%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 65vh;
+}
+
+.container h1 {
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+}
+
+.countdown {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.countdown div {
+  margin: 10px;
+}
+
+.countdown p {
+  padding: 20px;
+  background-color: hsl(236, 21%, 26%);
+  border: 5px;
+  color: hsl(345, 95%, 68%);
+  font-size: 40px;
+}
+
+.countdown h3 {
+  color: hsl(237, 18%, 59%);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.stars {
+  position: absolute;
+}
+
+.hills {
+  position: absolute;
+  bottom: 0;
+}
+
+.socials {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+.socials ul {
+  display: flex;
+}
+
+.socials ul li {
+  margin: 0 20px;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  color: white;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 1440px) {
+  .stars img,
+  .hills img {
+    width: 1600px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .stars img,
+  .hills img {
+    width: 1920px;
+  }
+}
+
+@media (max-width: 500px) {
+  .countdown h3 {
+    font-size: 10px;
+  }
+  .countdown p {
+    font-size: 20px;
+  }
+  .container h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .countdown h3 {
+    font-size: 10px;
+  }
+  .countdown p {
+    font-size: 18px;
+  }
+  .container h1 {
+    font-size: 15px;
+  }
+}
