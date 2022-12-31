@@ -1,26 +1,66 @@
-const countdown = () => {
-  const endDate = new Date("December 31, 2022 00:00:00").getTime();
-  const nowDate = new Date().getTime();
-  const diff = endDate - nowDate;
-  console.log(diff);
-  const seconds = 1000;
-  const minutes = seconds * 60;
-  const hours = minutes * 60;
-  const days = hours * 24;
+const timeDays = document.getElementById("days");
+const timeHours = document.getElementById("hours");
+const timeMinutes = document.getElementById("minutes");
+const timeSeconds = document.getElementById("seconds");
 
-  let timeDays = Math.floor(diff / days);
-  let timeHours = Math.floor((diff % days) / hours);
-  let timeMinutes = Math.floor((diff % hours) / minutes);
-  let timeSeconds = Math.floor((diff % minutes) / seconds);
+const countdownDate = new Date().setDate(new Date().getDate() + 20);
 
-  timeHours = timeHours < 10 ? "0" + timeHours : timeHours;
-  timeMinutes = timeMinutes < 10 ? "0" + timeMinutes : timeMinutes;
-  timeSeconds = timeSeconds < 10 ? "0" + timeSeconds : timeSeconds;
+let prevTimeBetweenDates;
 
-  document.getElementById("days").innerText = timeDays;
-  document.getElementById("hours").innerText = timeHours;
-  document.getElementById("minutes").innerText = timeMinutes;
-  document.getElementById("seconds").innerText = timeSeconds;
+setInterval(() => {
+  const currentDate = new Date();
+  const timeBetweenDates = Math.ceil((countdownDate - currentDate) / 1000);
+  flipAllCards(timeBetweenDates);
+
+  prevTimeBetweenDates = timeBetweenDates;
+}, 250);
+
+const flipAllCards = (time) => {
+  let seconds = time % 60;
+  let minutes = Math.floor(time / 60) % 60;
+  let hours = Math.floor(time / (60 * 60)) % 24;
+  let days = Math.floor(time / (24 * 60 * 60)) % 24;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  hours = hours < 10 ? "0" + hours : hours;
+
+  flip(timeDays, days);
+  flip(timeHours, hours);
+  flip(timeMinutes, minutes);
+  flip(timeSeconds, seconds);
 };
 
-setInterval(countdown, 1000);
+const flip = (flipCard, newNumber) => {
+  const topHalf = flipCard.querySelector(".top-flipcard");
+  let startNumber = parseInt(topHalf.textContent);
+
+  if (flipCard !== timeDays) {
+    startNumber = startNumber < 10 ? "0" + startNumber : startNumber;
+  }
+
+  if (newNumber === startNumber) return;
+
+  const bottomHalf = flipCard.querySelector(".bottom-flipcard");
+  const topFlip = document.createElement("div");
+  topFlip.classList.add("top-flip");
+  const bottomFlip = document.createElement("div");
+  bottomFlip.classList.add("bottom-flip");
+
+  topHalf.textContent = startNumber;
+  bottomHalf.textContent = startNumber;
+  topFlip.textContent = startNumber;
+  bottomFlip.textContent = newNumber;
+
+  topFlip.addEventListener("animationstart", (e) => {
+    topHalf.textContent = newNumber;
+  });
+  topFlip.addEventListener("animationend", (e) => {
+    topFlip.remove();
+  });
+  bottomFlip.addEventListener("animationend", (e) => {
+    bottomHalf.textContent = newNumber;
+    bottomFlip.remove();
+  });
+  flipCard.append(topFlip, bottomFlip);
+};

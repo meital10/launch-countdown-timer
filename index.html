@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
     <link
       rel="icon"
@@ -25,42 +24,39 @@
   </head>
   <body>
     <div class="container">
-      <div class="stars">
-        <img src="./images/bg-stars.svg" alt="stars" />
-      </div>
       <h1>We're launching soon</h1>
       <div class="countdown">
-        <div>
-          <p id="days"></p>
-          <h3>Days</h3>
+        <div class="card">
+          <div class="card-value" id="days">
+            <div class="top-flipcard">20</div>
+            <div class="bottom-flipcard">20</div>
+          </div>
+          <div class="card-label">Days</div>
         </div>
 
-        <div>
-          <p id="hours"></p>
-          <h3>Hours</h3>
+        <div class="card">
+          <div class="card-value" id="hours">
+            <div class="top-flipcard">00</div>
+            <div class="bottom-flipcard">00</div>
+          </div>
+          <div class="card-label">Hours</div>
         </div>
 
-        <div>
-          <p id="minutes"></p>
-          <h3>Minutes</h3>
+        <div class="card">
+          <div class="card-value" id="minutes">
+            <div class="top-flipcard">00</div>
+            <div class="bottom-flipcard">00</div>
+          </div>
+          <div class="card-label">Minutes</div>
         </div>
 
-        <div>
-          <p id="seconds"></p>
-          <h3>Seconds</h3>
+        <div class="card">
+          <div class="card-value" id="seconds">
+            <div class="top-flipcard">00</div>
+            <div class="bottom-flipcard">00</div>
+          </div>
+          <div class="card-label">Seconds</div>
         </div>
-      </div>
-
-      <div class="socials">
-        <ul>
-          <li><img src="./images/icon-facebook.svg" alt="facebook" /></li>
-          <li><img src="./images/icon-pinterest.svg" alt="pinterest" /></li>
-          <li><img src="./images/icon-instagram.svg" alt="instagram" /></li>
-        </ul>
-      </div>
-
-      <div class="hills">
-        <img src="./images/pattern-hills.svg" alt="hills" />
       </div>
     </div>
 
@@ -74,8 +70,19 @@
       >. Coded by
       <a href="https://github.com/meital10" target="_blank" rel="noreferrer"
         >Meital Aharoni</a
-      >.
+      >
     </div>
+
+    <footer>
+      <div class="socials">
+        <ul>
+          <li><img src="./images/icon-facebook.svg" alt="facebook" /></li>
+          <li><img src="./images/icon-pinterest.svg" alt="pinterest" /></li>
+          <li><img src="./images/icon-instagram.svg" alt="instagram" /></li>
+        </ul>
+      </div>
+    </footer>
+
     <script src="./app.js"></script>
   </body>
 </html>

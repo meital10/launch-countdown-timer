@@ -1,11 +1,9 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
 }
 
 ul {
@@ -13,69 +11,156 @@ ul {
 }
 
 body {
+  min-width: 250px;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: "Red Hat Text", sans-serif;
   background-color: hsl(235, 16%, 14%);
+  background-image: url("./images/bg-stars.svg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top center;
 }
 
 .container {
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 65vh;
+  text-align: center;
 }
 
 .container h1 {
   color: white;
-  font-size: 25px;
+  font-size: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 50px;
+  letter-spacing: 0.18rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  gap: 1.5rem;
 }
 
 .countdown {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  max-width: 470px;
   align-items: center;
   justify-content: space-between;
   text-align: center;
 }
 
-.countdown div {
-  margin: 10px;
+.card {
+  position: relative;
+  margin: 0.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 25%;
 }
 
-.countdown p {
-  padding: 20px;
-  background-color: hsl(236, 21%, 26%);
-  border: 5px;
+.card-value {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  background-color: hsl(235, 15%, 14%);
   color: hsl(345, 95%, 68%);
-  font-size: 40px;
+  font-size: 3.2rem;
+  width: 100px;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 0.2rem 0 (234, 17%, 12%);
 }
 
-.countdown h3 {
-  color: hsl(237, 18%, 59%);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.stars {
+.card-value .top-flip {
   position: absolute;
+  width: 100%;
+  animation: flip-top 250ms ease-in;
+  transform-origin: bottom;
 }
 
-.hills {
+@keyframes flip-top {
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+.card-value .bottom-flip {
   position: absolute;
   bottom: 0;
+  width: 100%;
+  animation: flip-bottom 250ms ease-out 250ms;
+  transform-origin: top;
+  transform: rotateX(90deg);
 }
 
-.socials {
+@keyframes flip-bottom {
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.top-flipcard,
+.bottom-flipcard,
+.card-value .top-flip,
+.card-value .bottom-flip {
+  height: 0.9em;
+  padding: 0.4em 0.25em;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.top-flipcard,
+.card-value .top-flip {
+  background-color: #2c2c44;
+  border-bottom-left-radius: 0.15em;
+  border-bottom-right-radius: 0.15em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bottom-flipcard,
+.card-value .bottom-flip {
+  align-items: flex-end;
+  background-color: #34364f;
+  border-top-left-radius: 0.15em;
+  border-top-right-radius: 0.15em;
+}
+
+.card-label {
+  color: hsl(237, 18%, 59%);
+  text-transform: uppercase;
+  letter-spacing: 0.125em;
+  font-size: 0.8em;
+  margin-top: 0.6em;
+}
+
+footer {
   position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 12rem;
+  background-image: url(./images/pattern-hills.svg);
+  background-repeat: no-repeat;
+  background-position: bottom right -2rem;
+  background-size: 300% 100%;
+}
+.socials {
+  display: flex;
+  gap: 3.2rem;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .socials ul {
@@ -83,52 +168,45 @@ body {
 }
 
 .socials ul li {
-  margin: 0 20px;
+  margin: 0 1.25em;
 }
 
 .attribution {
   font-size: 11px;
   text-align: center;
   color: white;
+  margin-bottom: 15px;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
 
-@media (min-width: 1440px) {
-  .stars img,
-  .hills img {
-    width: 1600px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .stars img,
-  .hills img {
-    width: 1920px;
-  }
-}
+/* -------MEDIA QUERIES ---------------- */
 
 @media (max-width: 500px) {
-  .countdown h3 {
-    font-size: 10px;
+  .countdown {
+    max-width: 400px;
   }
-  .countdown p {
-    font-size: 20px;
-  }
-  .container h1 {
-    font-size: 20px;
+  .card-value {
+    width: 80px;
+    font-size: 2.5rem;
   }
 }
 
-@media (max-width: 360px) {
-  .countdown h3 {
-    font-size: 10px;
-  }
-  .countdown p {
-    font-size: 18px;
-  }
+@media (max-width: 400px) {
   .container h1 {
-    font-size: 15px;
+    font-size: 1.3rem;
+  }
+
+  .countdown {
+    max-width: 320px;
+  }
+  .card-value {
+    width: 60px;
+    font-size: 2rem;
+  }
+
+  .card-label {
+    font-size: 0.5em;
   }
 }
